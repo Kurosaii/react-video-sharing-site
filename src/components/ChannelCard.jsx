@@ -53,6 +53,6 @@ const ChannelCard = ({ channelDetail }) => (
             </CardContent>
         </Link>
     </Box>
-)
+);
 
 export default ChannelCard

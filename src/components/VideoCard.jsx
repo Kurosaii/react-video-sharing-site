@@ -60,6 +60,6 @@ const VideoCard = ({ video: {
             </CardContent>
         </Card>
     );
-}
+};
 
 export default VideoCard;
