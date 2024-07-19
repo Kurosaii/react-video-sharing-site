@@ -14,17 +14,22 @@ const VideoCard = ({ video: {
             boxShadow: "none",
             borderRadius: 0,
             width: {
-                md: "320px",
                 xs: "100%",
+                sm: "358px",
+                md: "320px",
             },
         }}>
             <Link to={videoId ? `/video/${videoId}` : demoVideoUrl}>
                 <CardMedia
-                    image={snippet?.thumbnails?.high?.url}
+                    image={snippet?.thumbnails?.high?.url || demoThumbnailUrl}
                     alt={snippet?.title}
                     sx={{
                         height: 180,
-                        width: 358,
+                        width: {
+                            xs: "100%",
+                            sm: "358px",
+                            md: "320px",
+                        },
                     }}
                 />
             </Link>
@@ -39,7 +44,7 @@ const VideoCard = ({ video: {
                         fontWeight="bold"
                         variant="subtitle1"
                     >
-                        {snippet?.title.slice(0, 60)}
+                        {snippet?.title.slice(0, 60) || demoVideoTitle.slice(0, 60)}
                     </Typography>
                 </Link>
 
