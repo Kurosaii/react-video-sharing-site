@@ -12,7 +12,8 @@ const Feed = () => {
 
     useEffect(() => {
         fetchFromAPI(`search?part=snippet&q=${selectedCategory}`).then((data) => {
-            setVideos(data.items);
+            // Remove playlist results.
+            setVideos(data.items.filter((item) => item.id.videoId || item.id.channelId));
         });
     }, [selectedCategory]);
 
