@@ -43,7 +43,7 @@ const ChannelCard = ({ channelDetail, marginTop }) => (
                     {channelDetail?.snippet?.title}
                     <CheckCircle sx={{
                         color: "gray",
-                        fontSize: 14,
+                        fontSize: "14px",
                         ml: "5px",
                     }} />
                 </Typography>

@@ -34,7 +34,7 @@ const SearchBar = () => {
                 className="search-bar"
                 placeholder="Search..."
                 value={searchTerm}
-                onChange={(e) => { setSearchTerm(e.target.value) }}
+                onChange={(e) => { setSearchTerm(e.target.value); }}
             />
             <IconButton
                 type="submit"

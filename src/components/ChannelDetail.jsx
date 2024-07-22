@@ -5,11 +5,12 @@ import { fetchFromAPI } from "../utils/fetchFromAPI";
 
 import { Box } from "@mui/material";
 
-import { Videos, ChannelCard } from './';
+import { Videos, ChannelCard } from "./";
 
 const ChannelDetail = () => {
     const [channelDetail, setChannelDetail] = useState(null);
     const [videos, setVideos] = useState([])
+
     const { id } = useParams();
 
     useEffect(() => {
@@ -22,8 +23,7 @@ const ChannelDetail = () => {
     }, [id]);
 
     return (
-        <Box
-            minHeight="95vh">
+        <Box minHeight="95vh">
             <Box>
                 <div style={{
                     background: "linear-gradient(180deg, rgba(255,206,153,1) 0%, rgba(255,168,128,1) 35%, rgba(142,82,141,1) 100%)",
@@ -39,12 +39,11 @@ const ChannelDetail = () => {
 
             <Box
                 display="flex"
-                p="2"
+                p={2}
             >
                 <Box sx={{ mr: { sm: "100px" } }} />
                 <Videos videos={videos} />
             </Box>
-
         </Box>
     );
 };

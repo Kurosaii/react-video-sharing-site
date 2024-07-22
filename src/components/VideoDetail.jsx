@@ -69,11 +69,11 @@ const VideoDetail = () => {
                         </Typography>
 
                         <Stack
+                            color="#fff"
                             direction="row"
                             justifyContent="space-between"
                             px={2}
                             py={1}
-                            sx={{ color: "#fff" }}
                         >
                             <Link to={`/channel/${channelId}`}>
                                 <Typography
@@ -123,8 +123,8 @@ const VideoDetail = () => {
                     }}
                 >
                     <Videos
-                        direction="column"
                         videos={videos}
+                        direction="column"
                     />
                 </Box>
             </Stack>
