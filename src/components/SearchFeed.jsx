@@ -8,14 +8,15 @@ import { Box, Typography } from "@mui/material";
 import Videos from "./Videos";
 
 const SearchFeed = () => {
-    const [videos, setVideos] = useState([])
+    const [videos, setVideos] = useState(null);
+
     const { searchTerm } = useParams();
 
     useEffect(() => {
-        fetchFromAPI(`search?part=snippet&q=${searchTerm}`).then((data) => {
-            // Remove playlist results.
-            setVideos(data.items.filter((item) => item.id.videoId || item.id.channelId));
-        });
+        setVideos(null);
+
+        fetchFromAPI(`search?part=snippet&q=${searchTerm}&type=video,channel`)
+            .then((data) => { setVideos(data.items); });
     }, [searchTerm]);
 
     return (

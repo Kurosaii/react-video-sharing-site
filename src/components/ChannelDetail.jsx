@@ -9,17 +9,23 @@ import { Videos, ChannelCard } from "./";
 
 const ChannelDetail = () => {
     const [channelDetail, setChannelDetail] = useState(null);
-    const [videos, setVideos] = useState([])
+    const [videos, setVideos] = useState(null);
 
     const { id } = useParams();
 
     useEffect(() => {
-        fetchFromAPI(`channels?part=snippet&id=${id}`).then((data) => {
-            setChannelDetail(data?.items[0]);
-        });
-        fetchFromAPI(`search?channelId=${id}&part=snippet&order=date`).then((data) => {
-            setVideos(data?.items);
-        });
+        const fetchResults = async () => {
+            setChannelDetail(null);
+            setVideos(null);
+
+            const channelDetailData = await fetchFromAPI(`channels?part=snippet&id=${id}`);
+            setChannelDetail(channelDetailData?.items[0]);
+
+            const videosData = await fetchFromAPI(`search?channelId=${id}&part=snippet&order=date`);
+            setVideos(videosData?.item);
+        };
+
+        fetchResults();
     }, [id]);
 
     return (

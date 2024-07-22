@@ -8,13 +8,13 @@ import { Sidebar, Videos } from "./";
 
 const Feed = () => {
     const [selectedCategory, setSelectedCategory] = useState("New");
-    const [videos, setVideos] = useState([])
+    const [videos, setVideos] = useState(null);
 
     useEffect(() => {
-        fetchFromAPI(`search?part=snippet&q=${selectedCategory}`).then((data) => {
-            // Remove playlist results.
-            setVideos(data.items.filter((item) => item.id.videoId || item.id.channelId));
-        });
+        setVideos(null);
+
+        fetchFromAPI(`search?part=snippet&q=${selectedCategory}&type=video,channel`)
+            .then((data) => { setVideos(data.items); });
     }, [selectedCategory]);
 
     return (
